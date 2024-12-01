@@ -12,9 +12,18 @@ input("Before starting, make sure you have Python 3.11 installed and that you ha
 
 print("Preparing files...")
 
-folderExists = os.path.isdir('source-engine')
+sFolderExists = os.path.isdir('source-engine')
+hbFolderExists = os.path.isdir("/usr/local/Cellar/")
 
-if not folderExists:
+print("Installing XCode and Homebrew, please accept any licenses, warnings etc...")
+exec("xcode-select --install")
+if not hbFolderExists:
+    exec('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+
+exec("brew install git")
+exec("brew install sdl2 freetype2 fontconfig pkg-config opus libpng libedit")
+
+if not sFolderExists:
     exec("git clone https://github.com/nillerusr/source-engine --recursive")
 
 print("Configuring build...")
