@@ -42,7 +42,7 @@ jobs:
               with:
                   name: build
                   path: build
-            - name: Rename __main__ to release-osx
+            - name: Rename __main__ to release-osx so it is better
               run: |
                   mv build/__main__ build/release-osx
             # if manual dispatch is used, use an argument as tag name, else use ref
