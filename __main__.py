@@ -1,8 +1,7 @@
-import os
 import sys
-
-def exec(command: str):
-    os.system(command)
+from builder import *
+from utils import *
+from downloader import *
 
 print("Half Life 2 Patcher")
 print("Version 0.0.1")
@@ -14,40 +13,9 @@ if sys.argv[1] != "--debug":
 else:
     print("Skipping input...")
 
-print("Preparing files...")
+Download()
 
-sFolderExists = os.path.isdir('source-engine')
-hbFolderExists = os.path.isdir("/opt/homebrew")
-
-print("Installing XCode and Homebrew, please accept any licenses, warnings etc...")
-exec("xcode-select --install")
-if not hbFolderExists:
-    exec('NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
-    print("Installed Homebrew! Please restart your terminal...")
-    exit(0)
-
-exec("brew install git")
-exec("brew install sdl2 freetype2 fontconfig pkg-config opus libpng libedit")
-
-if not sFolderExists:
-    exec("git clone https://github.com/nillerusr/source-engine --recursive")
-
-print("Configuring build...")
-
-# Run in source engine dir
-exec("cd source-engine && python3 waf configure -T release --prefix='' --build-games=hl2")
-
-print("Building...")
-
-# Run in source engine dir
-exec("cd source-engine && python3 waf build")
-
-print("Installing...")
-
-# Run in source engine dir
-exec("cd source-engine && python3 waf install --destdir='hl2'")
-
-print("Patch built!")
+Build()
 
 res = ""
 
