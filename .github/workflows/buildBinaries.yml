@@ -7,9 +7,6 @@ on:
             tag:
                 description: 'Tag name'
                 required: true
-    push:
-        branches:
-            - main
 
 jobs:
     build:
@@ -53,4 +50,4 @@ jobs:
                   files: build/release-osx
                   prerelease: true
                   generate_release_notes: true
-                  tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+                  tag_name: ${{ github.event.inputs.tag }}
