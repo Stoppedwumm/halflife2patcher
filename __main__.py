@@ -5,7 +5,7 @@ from downloader import *
 from patcher import *
 
 print("Half Life 2 Patcher")
-print("Version 0.0.1")
+print("Version 1.1.0")
 print("Written by Stoppedwumm")
 print("Source Engine: https://github.com/nillerusr/source-engine")
 
