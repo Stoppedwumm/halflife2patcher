@@ -22,7 +22,7 @@ hbFolderExists = os.path.isdir("/usr/local/Cellar/")
 print("Installing XCode and Homebrew, please accept any licenses, warnings etc...")
 exec("xcode-select --install")
 if not hbFolderExists:
-    exec('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+    exec('NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
     print("Installed Homebrew! Please restart your terminal...")
     exit(0)
 
