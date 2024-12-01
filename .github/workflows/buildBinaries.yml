@@ -1,0 +1,48 @@
+name: Build Binaries
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: macos-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Setup Python
+              uses: actions/setup-python@v2
+              with:
+                  python-version: 3.11
+            - name: Install requirements
+              run: |
+                  pip install -r  buildReq.txt
+            - name: Build
+              run: |
+                  pyinstaller -F -y __main__.py
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build
+                  path: dist
+    release:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Download Artifact
+              uses: actions/download-artifact@v3
+              with:
+                  name: build
+                  path: build
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  files: build
+                  prerelease: true
+                  generate_release_notes: true
