@@ -1,6 +1,16 @@
 from utils import *
 
 def Patcher(result: str):
+    """
+    Patches the Half-Life 2 game by replacing specific directories and files with the patched versions.
+
+    Args:
+        result (str): The path to the Half-Life 2 installation directory where the patches will be applied.
+
+    This function copies the 'bin' directories from the 'source-engine/hl2' to the specified Half-Life 2 directory.
+    It also copies the 'hl2_launcher' file from the 'source-engine/hl2' directory and renames it to 'hl2_osx' in the
+    specified Half-Life 2 directory.
+    """
     print("Patching...")
     res = result
     # Replace files over: source-engine/hl2 => bin, hl2/bin

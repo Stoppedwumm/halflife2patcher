@@ -1,3 +1,9 @@
 import os
 def exec(command: str):
-    os.system(command)
+    """
+    Execute a shell command
+
+    Args:
+        command (str): The command to execute
+    """
+    return os.system(command)
