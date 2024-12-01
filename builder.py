@@ -1,5 +1,4 @@
 from utils import *
-
 def Build(game: str = "hl2", dest: str = "hl2"):
     """
     Builds and installs the given game from the source engine, defaulting to half-life 2.
