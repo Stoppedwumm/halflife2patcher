@@ -21,3 +21,6 @@ jobs:
             - name: Build
               run: |
                   python3 __main__.py --debug
+            - name: Build Again
+              run: |
+                  python3 __main__.py --debug
