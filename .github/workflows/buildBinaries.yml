@@ -27,7 +27,7 @@ jobs:
                   pip install -r  buildReq.txt
             - name: Build
               run: |
-                  pyinstaller -F -y __main__.py
+                  pyinstaller -F -y --console __main__.py
             - name: Upload Artifact
               uses: actions/upload-artifact@v4
               with:
