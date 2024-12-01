@@ -2,7 +2,6 @@ def GUIThread(data, lock):
     import os
     import PyQt6.QtWidgets as qtw
     import PyQt6.QtGui as qtg
-    import PyQt6.QtCore as qtc
     # Installer window where you select a drive, and install
     class Window(qtw.QWidget):
         def __init__(self):
