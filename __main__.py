@@ -56,12 +56,17 @@ if sys.argv[1] == "--debug":
     exit(0)
 
 defaultInstall = False
+otherInstall = False
 
 if os.path.isdir("~/Library/Application Support/Steam/SteamApps"):
-    choice = input("Do you want to install the patched files in the default location on your main drive? (y/n)")
+    choice = input("Do you want to install the patched files in the default location on your main drive? You can also change the drive to look on with other. (y/n/other) ")
 
     if choice == "y" or choice == "Y":
         defaultInstall = True
+    elif choice == "n" or choice == "N":
+        pass
+    else:
+        otherInstall = True
 
 if not defaultInstall:
     while True:
@@ -72,6 +77,13 @@ if not defaultInstall:
             break
 
         print("Enter the full path to your Half-Life 2 path, you can navigate to the folder by clicking 'Half-Life 2 => Right Click => Manage => Browse Local Files'. After you've copied the path (search online), paste it here.")
+elif otherInstall:
+    while True:
+        halfLife2Path = input("Enter the Drive Name where Half Life 2 is installed: ")
+
+        if halfLife2Path != "?":
+            res = "/Volumes/" + halfLife2Path + "/SteamLibrary/steamapps/common/Half-Life 2"
+            break
 else:
     res = "~/Library/Application Support/Steam/SteamApps/common/Half-Life 2"
 
