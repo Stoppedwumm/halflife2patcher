@@ -1,6 +1,6 @@
 from utils import *
 
-def Download():
+def Download(skipHomebrew: bool = False, skipSourceEngine: bool = False, skipDeps: bool = False, repoURL: str = "https://github.com/nillerusr/source-engine"):
     print("Preparing files...")
 
     sFolderExists = os.path.isdir('source-engine')
@@ -8,13 +8,14 @@ def Download():
 
     print("Installing XCode and Homebrew, please accept any licenses, warnings etc...")
     exec("xcode-select --install")
-    if not hbFolderExists:
+    if not hbFolderExists and not skipHomebrew:
         exec('NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
         print("Installed Homebrew! Please restart your terminal...")
         exit(0)
 
-    exec("brew install git")
-    exec("brew install sdl2 freetype2 fontconfig pkg-config opus libpng libedit")
+    if not skipDeps:
+        exec("brew install git")
+        exec("brew install sdl2 freetype2 fontconfig pkg-config opus libpng libedit")
 
-    if not sFolderExists:
-        exec("git clone https://github.com/nillerusr/source-engine --recursive")
+    if not sFolderExists and not skipSourceEngine:
+        exec(f"git clone {repoURL} --recursive")

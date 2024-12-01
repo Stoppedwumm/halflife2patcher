@@ -2,6 +2,7 @@ import sys
 from builder import *
 from utils import *
 from downloader import *
+from patcher import *
 
 print("Half Life 2 Patcher")
 print("Version 0.0.1")
@@ -55,23 +56,4 @@ elif otherInstall:
 else:
     res = "~/Library/Application Support/Steam/SteamApps/common/Half-Life 2"
 
-print("Patching...")
-
-# Replace files over: source-engine/hl2 => bin, hl2/bin
-# Copy over hl2_launcher and rename it hl2_osx
-patchedPath = "source-engine/hl2"
-binList = ['bin', 'hl2/bin']
-
-if res.endswith("/"):
-    res = res[:-1]
-
-# Replace the files in the halfLifePath
-for bin in binList:
-    print(f"cp -r '{patchedPath}/{bin}' '{res}/{bin}'")
-    exec(f"cp -r '{patchedPath}/{bin}' '{res}/{bin}'")
-
-# Copy over hl2_launcher and rename it hl2_osx
-print(f"cp '{patchedPath}/hl2_launcher' '{res}/hl2_osx'")
-exec(f"cp '{patchedPath}/hl2_launcher' '{res}/hl2_osx'")
-
-print("Patched!")
+Patcher(res)
