@@ -4,14 +4,12 @@ from utils import *
 from downloader import *
 from patcher import *
 
-print(sys.argv.count("--debug"))
-print(sys.argv.count("--debug"))
 print("Half Life 2 Patcher")
 print("Version 0.0.1")
 print("Written by Stoppedwumm")
 print("Source Engine: https://github.com/nillerusr/source-engine")
 
-if sys.argv.count("--debug") != 2:
+if sys.argv.count("--debug") != 1:
     input("Before starting, make sure you have Python 3.11 installed and that you have git installed. As of 2024, you need to enable in the properties of Half Life 2 the beta 'steam_legacy - Pre-20th Anniversary Build'. Press enter to continue...")
 else:
     print("Skipping input...")
@@ -22,7 +20,7 @@ Build()
 
 res = ""
 
-if sys.argv.count("--debug") == 2:
+if sys.argv.count("--debug") == 1:
     print("Build in debug mode done! Exiting early...")
     exit(0)
 
