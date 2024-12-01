@@ -17,7 +17,7 @@ else:
 print("Preparing files...")
 
 sFolderExists = os.path.isdir('source-engine')
-hbFolderExists = os.path.isdir("/usr/local/Cellar/")
+hbFolderExists = os.path.isdir("/opt/homebrew")
 
 print("Installing XCode and Homebrew, please accept any licenses, warnings etc...")
 exec("xcode-select --install")
