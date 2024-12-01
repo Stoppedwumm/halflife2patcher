@@ -51,3 +51,4 @@ jobs:
                   prerelease: true
                   generate_release_notes: true
                   tag_name: ${{ github.event.inputs.tag }}
+                  name: ${{ github.event.inputs.tag }}
