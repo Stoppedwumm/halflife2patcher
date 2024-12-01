@@ -48,8 +48,6 @@ jobs:
             # if manual dispatch is used, use an argument as tag name, else use ref
             - name: Release
               uses: softprops/action-gh-release@v1
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   files: build/release-osx
                   prerelease: true
