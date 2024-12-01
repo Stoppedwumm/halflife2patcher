@@ -42,15 +42,16 @@ jobs:
               with:
                   name: build
                   path: build
-            - name: LS
-              run: ls build
+            - name: Rename __main__ to release-osx
+              run: |
+                  mv build/__main__ build/release-osx
             # if manual dispatch is used, use an argument as tag name, else use ref
             - name: Release
               uses: softprops/action-gh-release@v1
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  files: build
+                  files: build/release-osx
                   prerelease: true
                   generate_release_notes: true
                   tag_name: ${{ github.event.inputs.tag || github.ref }}
