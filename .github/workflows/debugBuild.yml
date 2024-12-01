@@ -21,6 +21,8 @@ jobs:
             - name: Build
               run: |
                   python3 __main__.py --debug
-            - name: Build Again
-              run: |
-                  python3 __main__.py --debug
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: build
+                  path: source-engine/hl2
