@@ -27,15 +27,15 @@ if sys.argv.count("--debug") == 1:
 defaultInstall = False
 otherInstall = False
 
-if os.path.isdir("~/Library/Application Support/Steam/SteamApps"):
-    choice = input("Do you want to install the patched files in the default location on your main drive? You can also change the drive to look on with other. (y/n/other) ")
 
-    if choice == "y" or choice == "Y":
-        defaultInstall = True
-    elif choice == "n" or choice == "N":
-        pass
-    else:
-        otherInstall = True
+choice = input("Do you want to install the patched files in the default location on your main drive? You can also change the drive to look on with other. (y/n/other) ")
+
+if choice == "y" or choice == "Y":
+    defaultInstall = True
+elif choice == "n" or choice == "N":
+    pass
+else:
+    otherInstall = True
 
 if not defaultInstall:
     while True:
@@ -54,6 +54,12 @@ elif otherInstall:
             res = "/Volumes/" + halfLife2Path + "/SteamLibrary/steamapps/common/Half-Life 2"
             break
 else:
-    res = "~/Library/Application Support/Steam/SteamApps/common/Half-Life 2"
+    if os.path.isdir("~/Library/Application Support/Steam/SteamApps/common/Half-Life 2"):
+        res = "~/Library/Application Support/Steam/SteamApps/common/Half-Life 2"
+    elif os.path.isdir("~/.steam/steam/steamapps/common/Half-Life 2"):
+        res = "~/.steam/steam/steamapps/common/Half-Life 2"
+    else:
+        raise ValueError("Could not find Half-Life 2 path.")
+    
 
 Patcher(res)
