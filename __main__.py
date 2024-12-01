@@ -55,14 +55,25 @@ if sys.argv[1] == "--debug":
     print("Build in debug mode done! Exiting early...")
     exit(0)
 
-while True:
-    halfLife2Path = input("Enter the path to Half-Life 2 or press ? for help: ")
+defaultInstall = False
 
-    if halfLife2Path != "?":
-        res = halfLife2Path
-        break
+if os.path.isdir("~/Library/Application Support/Steam/SteamApps"):
+    choice = input("Do you want to install the patched files in the default location on your main drive? (y/n)")
 
-    print("Enter the full path to your Half-Life 2 path, you can navigate to the folder by clicking 'Half-Life 2 => Right Click => Manage => Browse Local Files'. After you've copied the path (search online), paste it here.")
+    if choice == "y" or choice == "Y":
+        defaultInstall = True
+
+if not defaultInstall:
+    while True:
+        halfLife2Path = input("Enter the path to Half-Life 2 or press ? for help: ")
+
+        if halfLife2Path != "?":
+            res = halfLife2Path
+            break
+
+        print("Enter the full path to your Half-Life 2 path, you can navigate to the folder by clicking 'Half-Life 2 => Right Click => Manage => Browse Local Files'. After you've copied the path (search online), paste it here.")
+else:
+    res = "~/Library/Application Support/Steam/SteamApps/common/Half-Life 2"
 
 print("Patching...")
 
