@@ -76,9 +76,9 @@ else:
                 res = "/Volumes/" + halfLife2Path + "/SteamLibrary/steamapps/common/Half-Life 2"
                 break
     elif defaultInstall:
-        if os.path.isdir("~/Library/Application Support/Steam/steamapps/common/Half-Life 2"):
+        if os.path.isdir(os.path.expanduser("~/Library/Application Support/Steam/steamapps/common/Half-Life 2")):
             res = "~/Library/Application Support/Steam/steamapps/common/Half-Life 2"
-        elif os.path.isdir("~/.steam/steam/steamapps/common/Half-Life 2"):
+        elif os.path.isdir(os.path.expanduser("~/.steam/steam/steamapps/common/Half-Life 2")):
             res = "~/.steam/steam/steamapps/common/Half-Life 2"
         else:
             raise ValueError("Could not find Half-Life 2 path.")
