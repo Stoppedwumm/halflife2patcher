@@ -16,27 +16,10 @@ if sys.argv.count("--debug") != 1:
 else:
     print("Skipping input...")
 
-#if sys.argv.count("--debug") == 1:
+
 Download()
 
 Build()
-"""
-else:
-    data = {
-        "download": False,
-        "path": "",
-    }
-    lock = threading.Lock()
-    threading.Thread(target=gui.GUIThread, args=(data, lock)).start()
-    while True:
-        if data["download"] == True:
-            pregrabbedPath = data["path"]
-            break
-    Download()
-    Build()
-"""
-        
-    
 
 if pregrabbedPath != "":
     Patcher(pregrabbedPath)
