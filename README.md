@@ -2,8 +2,6 @@
 This was written by me (because the manual process is sometimes complicated)
 
 # How to use
-Requirements: Python
-
 As no other modules are being used, you only need the `release-osx` file
 
 Download it via the release tab.
